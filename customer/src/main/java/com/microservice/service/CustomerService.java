@@ -3,10 +3,17 @@ package com.microservice.service;
 import com.microservice.entity.Customer;
 import com.microservice.entity.CustomerRegistrationRequest;
 import com.microservice.repo.CustomerRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-public record CustomerService(CustomerRepository customerRepository) {
+@AllArgsConstructor
+public class CustomerService{
+    private final CustomerRepository customerRepository;
+
+//    public CustomerService(CustomerRepository customerRepository) {
+//        this.customerRepository = customerRepository;
+//    }  reblace with @AllArgsConstructor
 
     public void registerCustomer(CustomerRegistrationRequest register) {
         Customer customer = Customer.builder().
